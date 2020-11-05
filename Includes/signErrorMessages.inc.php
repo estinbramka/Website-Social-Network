@@ -20,4 +20,10 @@ if (isset($_GET["error"]))
         You have Signed up!
         </div>";
     }
+    else if ($_GET["error"] == "wronglogin")
+    {
+        echo "<div class=\"alert alert-danger\" role=\"alert\">
+        Wrong Email or Password!
+        </div>";
+    }
 }

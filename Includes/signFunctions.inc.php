@@ -46,3 +46,33 @@ function createUser($conn, $firstName, $lastName, $email, $password)
     header("location: ../signup.php?error=none");
     exit();
 }
+
+function loginUser($conn, $email, $password)
+{
+    $emailExists = emailExists($conn, $email);
+
+    if ($emailExists === false)
+    {
+        header("location: ../index.php?error=wronglogin");
+        exit();
+    }
+
+    $hashed_password = $emailExists["usersPassword"];
+    $check_password = password_verify($password, $hashed_password);
+    
+    if ($check_password === false)
+    {
+        header("location: ../index.php?error=wronglogin");
+        exit();
+    }
+    else if ($check_password === true)
+    {
+        session_start();
+        $_SESSION["usersId"] = $emailExists["usersId"];
+        $_SESSION["usersFirstname"] = $emailExists["usersFirstname"];
+        $_SESSION["usersLastname"] = $emailExists["usersLastname"];
+
+        header("location: ../home.php");
+        exit();
+    }
+}

@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if (isset($_SESSION["usersId"]))
+    {
+        header("location: ../home.php");
+        exit();
+    }
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,14 +26,17 @@
                     <img class="mb-4" src="/Images/logo.png" alt="" width="200" height="200">
                     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                     <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                    <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
                     <div class="checkbox mb-3">
                         <label>
                             <input type="checkbox" value="remember-me"> Remember me
                         </label>
                     </div>
+                    <?php
+                        require_once "Includes/signErrorMessages.inc.php";
+                    ?>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                 </form>
                 <a href="/signup.php" class="btn btn-lg btn-secondary btn-block" style="margin-top:7px">Sign up</a>

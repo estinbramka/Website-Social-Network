@@ -2,7 +2,7 @@
 
 $serverName = "localhost";
 $dbUsername = "root";
-$dbPassword = "";
+$dbPassword = "1234";
 $dbName = "SocialNetworkDB";
 
 // Create connection
