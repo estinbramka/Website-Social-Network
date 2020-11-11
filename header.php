@@ -1,5 +1,10 @@
 <?php
-session_start();
+    session_start();
+    if (empty($_SESSION["usersId"]))
+    {
+        header("location: ../");
+        exit();
+    }
 ?>
 
 <!doctype html>
@@ -15,7 +20,9 @@ session_start();
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/">
+        <img src="/Images/logoMinimal.svg" width="35" height="35" alt="" loading="lazy" class="mt-sm-n2 px-sm-1 border border-dark rounded-circle">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
