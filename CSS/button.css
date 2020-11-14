@@ -1,0 +1,40 @@
+    /* custom primary buttons */
+    
+    .btn-estin {
+        color: #212529;
+        background-color: #C0C0C0;
+        border-color: #C0C0C0
+    }
+    
+    .btn-estin:hover {
+        color: #212529;
+        background-color: #D3D3D3;
+        border-color: #D3D3D3
+    }
+    
+    .btn-estin:focus,
+    .btn-estin.focus {
+        box-shadow: 0 0 0 .2rem rgba(91, 194, 194, 0)
+    }
+    
+    .btn-estin.disabled,
+    .btn-estin:disabled {
+        color: #212529;
+        background-color: rgb(119, 180, 204);
+        border-color: #5bc2c2
+    }
+    
+    .btn-estin:not(:disabled):not(.disabled):active,
+    .btn-estin:not(:disabled):not(.disabled).active,
+    .show>.btn-estin.dropdown-toggle {
+        color: #212529;
+        background-color: #9fbfdf;
+        border-color: #9fbfdf
+    }
+    
+    .btn-estin:not(:disabled):not(.disabled):active:focus,
+    .btn-estin:not(:disabled):not(.disabled).active:focus,
+    .show>.btn-estin.dropdown-toggle:focus {
+        box-shadow: 0 0 0 .2rem rgba(91, 194, 194, 0)
+    }
+    

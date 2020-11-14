@@ -15,12 +15,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/button.css">
     <script src="https://kit.fontawesome.com/39ba5b7d11.js" crossorigin="anonymous"></script>
     <title>Social Network</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-sm-1" id="navigationBar">
     <a class="navbar-brand" href="/">
         <img src="/Images/logoMinimal.svg" width="38" height="38" alt="" loading="lazy" class="px-sm-1 border border-dark rounded-circle">
     </a>
@@ -40,9 +41,6 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Includes/logout.inc.php">Log Out</a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
@@ -55,8 +53,12 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link btn btn-estin rounded-circle" href="/Includes/logout.inc.php">
+                    <i class="fas fa-sign-out-alt fa-2x" style="color:white;"></i>
+                </a>
             </li>
         </ul>
     </div>
 </nav>
+
+<div style="height:60px" id="navbarOffset"></div>
