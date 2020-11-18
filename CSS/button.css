@@ -3,7 +3,8 @@
     .btn-estin {
         color: #212529;
         background-color: #C0C0C0;
-        border-color: #C0C0C0
+        border-color: #C0C0C0;
+        width: 42px;
     }
     
     .btn-estin:hover {
@@ -38,3 +39,14 @@
         box-shadow: 0 0 0 .2rem rgba(91, 194, 194, 0)
     }
     
+
+    .dropdown-toggle-estin::after {
+        display: none;/*inline-block;*/
+        margin-left: .255em;
+        vertical-align: .255em;
+        content: "";
+        border-top: .3em solid;
+        border-right: .3em solid transparent;
+        border-bottom: 0;
+        border-left: .3em solid transparent;
+    }
