@@ -42,7 +42,8 @@
                 <a class="nav-link dropdown-toggle dropdown-toggle-estin btn btn-estin rounded-circle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-comment fa-lg" style="color:white;"></i>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu dropdown-menu-estin" aria-labelledby="navbarDropdown">
+                    <h1 class="dropdown-header" style="font-size: 1.6rem;">Messenger</h1>
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
@@ -53,7 +54,8 @@
                 <a class="nav-link dropdown-toggle dropdown-toggle-estin btn btn-estin rounded-circle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-bell fa-lg" style="color:white;"></i>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu dropdown-menu-estin" aria-labelledby="navbarDropdown">
+                    <h1 class="dropdown-header" style="font-size: 1.6rem;">Notifications</h1>
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
