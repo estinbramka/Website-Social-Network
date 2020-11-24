@@ -1,0 +1,12 @@
+#chat_box{
+    background: white;
+    position: fixed;
+    top: 56px;
+    bottom: 0px;
+    right: 0px;
+    width: 21%;
+}
+
+.chat_box_header{
+    color: #6c757d;
+}
