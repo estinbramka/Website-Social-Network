@@ -44,7 +44,7 @@
                     <i class="fas fa-comment fa-lg" style="color:white;"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-estin" aria-labelledby="navbarDropdown">
-                    <h1 class="dropdown-header" style="font-size: 1.6rem;">Messenger</h1>
+                    <h1 class="dropdown-header" style="font-size: 1.6rem;">Messages</h1>
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
