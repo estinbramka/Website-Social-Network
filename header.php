@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if (empty($_SESSION["usersId"]))
+    if (empty($_SESSION["user_id"]))
     {
         header("location: ../");
         exit();

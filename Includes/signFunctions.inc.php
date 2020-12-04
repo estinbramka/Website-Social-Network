@@ -16,7 +16,7 @@ function passwordMatch($password, $passwordConfirm)
 
 function emailExists($conn, $email)
 {
-    $stmt = $conn->prepare("SELECT * FROM users WHERE usersEmail = ?;");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE user_email = ?;");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $resultData = $stmt->get_result();
@@ -37,7 +37,7 @@ function emailExists($conn, $email)
 
 function createUser($conn, $firstName, $lastName, $email, $password)
 {
-    $stmt = $conn->prepare("INSERT INTO users (usersEmail, usersFirstname, usersLastname, usersPassword) VALUES (?, ?, ?, ?);");
+    $stmt = $conn->prepare("INSERT INTO users (user_email, user_firstname, user_lastname, user_password) VALUES (?, ?, ?, ?);");
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $stmt->bind_param("ssss", $email, $firstName, $lastName, $hashed_password);
     $stmt->execute();
@@ -45,6 +45,17 @@ function createUser($conn, $firstName, $lastName, $email, $password)
 
     header("location: ../signup.php?error=none");
     exit();
+}
+
+function getLoginDetails($conn, $user_id)
+{
+    $stmt = $conn->prepare("INSERT INTO login_details (user_id) VALUES (?);");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $last_id = $stmt->insert_id;
+    $stmt->close();
+
+    return $last_id;
 }
 
 function loginUser($conn, $email, $password)
@@ -57,7 +68,7 @@ function loginUser($conn, $email, $password)
         exit();
     }
 
-    $hashed_password = $emailExists["usersPassword"];
+    $hashed_password = $emailExists["user_password"];
     $check_password = password_verify($password, $hashed_password);
     
     if ($check_password === false)
@@ -68,9 +79,10 @@ function loginUser($conn, $email, $password)
     else if ($check_password === true)
     {
         session_start();
-        $_SESSION["usersId"] = $emailExists["usersId"];
-        $_SESSION["usersFirstname"] = $emailExists["usersFirstname"];
-        $_SESSION["usersLastname"] = $emailExists["usersLastname"];
+        $_SESSION["user_id"] = $emailExists["user_id"];
+        $_SESSION["user_firstname"] = $emailExists["user_firstname"];
+        $_SESSION["user_lastname"] = $emailExists["user_lastname"];
+        $_SESSION['login_details_id'] = getLoginDetails($conn, $emailExists["user_id"]);
 
         header("location: ../home.php");
         exit();

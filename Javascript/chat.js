@@ -22,10 +22,21 @@ function Resize_chat() {
     $("#main_layer").css("width", chat_left);
 }
 
+function Fetch_user() {
+    $.ajax({
+        url:"Includes/fetch_user.inc.php",
+        method:"POST",
+        success:function(data){
+            $('#user_details').html(data);
+        }
+    })
+}
+
 $(document).ready(function() {
     var chat_top = $("#navbarOffset").outerHeight(true);
     $("#chat_box").css("top", chat_top);
     Resize_chat();
+    Fetch_user();
     //alert(chat_left);
 });
 
