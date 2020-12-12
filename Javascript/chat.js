@@ -32,11 +32,27 @@ function Fetch_user() {
     })
 }
 
+function Update_last_activity()
+ {
+    $.ajax({
+        url:"Includes/update_last_activity.inc.php",
+        success:function()
+        {
+
+        }
+    })
+ }
+
 $(document).ready(function() {
     var chat_top = $("#navbarOffset").outerHeight(true);
     $("#chat_box").css("top", chat_top);
     Resize_chat();
     Fetch_user();
+    //Update_last_activity();
+    setInterval(function(){
+        Update_last_activity();
+        Fetch_user();
+    }, 5000);
     //alert(chat_left);
 });
 
