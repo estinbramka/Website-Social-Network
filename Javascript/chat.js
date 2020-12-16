@@ -32,8 +32,7 @@ function Fetch_user() {
     })
 }
 
-function Update_last_activity()
- {
+function Update_last_activity() {
     $.ajax({
         url:"Includes/update_last_activity.inc.php",
         success:function()
@@ -41,18 +40,26 @@ function Update_last_activity()
 
         }
     })
- }
+}
+
+function Start_chat()
+{
+    var to_user_id = $(this).data('touserid');
+    var to_user_firstname = $(this).data('touserfirstname');
+    var to_user_lastname = $(this).data('touserlastname');
+    alert("start chat: " + to_user_id +" "+ to_user_firstname +" "+ to_user_lastname);
+}
 
 $(document).ready(function() {
     var chat_top = $("#navbarOffset").outerHeight(true);
     $("#chat_box").css("top", chat_top);
     Resize_chat();
     Fetch_user();
-    //Update_last_activity();
     setInterval(function(){
         Update_last_activity();
         Fetch_user();
     }, 5000);
+    $(document).on('click', '.start_chat', Start_chat);
     //alert(chat_left);
 });
 

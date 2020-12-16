@@ -9,8 +9,11 @@
     </div>
 
     <div class="row" id="user_details">
-        <a class="btn btn-light rounded" href="#" style="text-align: left; width:100%;">
-            <img src="/Images/user.jpg" class="rounded-circle" style="width:30px">
+        <a class="btn btn-light rounded chat_box_user" href="#">
+            <div class="chat_box_user_statusicon">
+                <img src="/Images/user.jpg" class="rounded-circle chat_box_user_icon">
+                <div class="chat_box_user_status chat_box_user_status_offline"></div>
+            </div>
             <p class="d-inline align-middle ml-2"><b>Fisrtname Lastname</b></p>
         </a>
     </div>

@@ -20,20 +20,20 @@ while ($row = $resultData->fetch_assoc())
     $user_last_activity = Fetch_user_last_activity($row['user_id'], $conn);
     if($user_last_activity > $current_timestamp)
     {
-        $status = '<span class="label label-success">Online</span> <br>';
+        $status = 'chat_box_user_status_online';
     }
     else
     {
-        $status = '<span class="label label-danger">Offline</span> <br>';
+        $status = 'chat_box_user_status_offline';
     }
     $output .= 
     '
-    <a class="btn btn-light rounded" href="#" style="text-align: left; width:100%;">
-        <img src="/Images/user.jpg" class="rounded-circle" style="width:30px">
+    <a class="btn btn-light rounded chat_box_user start_chat" href="#" data-touserid="' . $row["user_id"] . '"data-touserfirstname="' . $row["user_firstname"] . '"data-touserlastname="' . $row["user_lastname"] . '">
+        <div class="chat_box_user_statusicon">
+            <img src="/Images/user.jpg" class="rounded-circle chat_box_user_icon">
+            <div class="chat_box_user_status ' . $status . '"></div>
+        </div>
         <p class="d-inline align-middle ml-2"><b>' . $row["user_firstname"] . ' ' . $row["user_lastname"] . '</b></p>
-        '
-        . $status . $user_last_activity . '<br>' . $current_timestamp .
-        '
     </a>
     '
     ;
