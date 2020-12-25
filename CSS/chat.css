@@ -45,3 +45,20 @@
 .chat_box_user_status_offline{
     background-color: #C0C0C0;
 }
+
+.user_dialog{
+    background: white;
+    position: fixed;
+    bottom: 0px;
+    right: 50px;
+    width: 350px;
+    border: 1px solid red;
+}
+
+.chat_history{
+    height: 400px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    margin-bottom: 24px;
+    padding: 16px;
+}

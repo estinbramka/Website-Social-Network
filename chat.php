@@ -18,3 +18,17 @@
         </a>
     </div>
 </div>
+<div id="user_message_box_details"></div>
+<!--
+<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">
+    <h6>You have chat with '+to_user_name+'</h6>
+    <div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">
+    </div>
+    <div class="form-group">
+        <textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control"></textarea>
+    </div>
+    <div class="form-group" align="right">
+        <button type="button" name="send_chat" id="'+to_user_id+'" class="btn btn-info send_chat">Send</button>
+    </div>
+</div>
+-->
