@@ -46,7 +46,7 @@ function Make_chat_dialog_box(to_user_id, to_user_firstname, to_user_lastname)
 {
     var content =   '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_firstname+' '+to_user_lastname+'">';
     content +=          '<h6>You have chat with '+to_user_firstname+' '+to_user_lastname+'</h6>';
-    content +=          '<span id="close_chat_'+to_user_id+'" class="close_chat">Close</span>'
+    content +=          '<span id="'+to_user_id+'" class="close_chat">Close</span>'
     content +=          '<div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
     content +=          '</div>';
     content +=          '<div class="form-group">';
@@ -71,11 +71,26 @@ function Start_chat()
 
 function Close_chat()
 {
-    var close_chat_id = this.id;
-    close_chat_id = close_chat_id.split("_");
-    close_chat_index = close_chat_id[2]
-    //alert(close_chat_index);
-    $("#user_dialog_"+close_chat_index).remove();
+    var to_user_id = $(this).attr('id');
+    //alert(to_user_id);
+    $("#user_dialog_"+to_user_id).remove();
+}
+
+function Send_chat()
+{
+    var to_user_id = $(this).attr('id');
+    var chat_message = $('#chat_message_'+to_user_id).val();
+    //alert(to_user_id+": "+chat_message);
+    $.ajax({
+        url:"Includes/insert_chat.inc.php",
+        method:"POST",
+        data:{to_user_id:to_user_id, chat_message:chat_message},
+        success:function(data)
+        {
+            $('#chat_message_'+to_user_id).val('');
+            $('#chat_history_'+to_user_id).html(data);
+        }
+    })
 }
 
 $(document).ready(function() {
@@ -89,6 +104,7 @@ $(document).ready(function() {
     }, 5000);
     $(document).on('click', '.start_chat', Start_chat);
     $(document).on('click', '.close_chat', Close_chat);
+    $(document).on('click', '.send_chat', Send_chat);
     //alert(chat_left);
 });
 
