@@ -42,12 +42,13 @@ function Update_last_activity() {
     })
 }
 
-function Make_chat_dialog_box(to_user_id, to_user_firstname, to_user_lastname)
+function Make_chat_dialog_box(to_user_id, to_user_firstname, to_user_lastname, gap)
 {
-    var content =   '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_firstname+' '+to_user_lastname+'">';
+    var content =   '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_firstname+' '+to_user_lastname+'" style="' + gap + '">';
     content +=          '<h6>You have chat with '+to_user_firstname+' '+to_user_lastname+'</h6>';
     content +=          '<span id="'+to_user_id+'" class="close_chat">Close</span>'
     content +=          '<div class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
+    content +=          Fetch_user_chat_history(to_user_id);
     content +=          '</div>';
     content +=          '<div class="form-group">';
     content +=              '<textarea name="chat_message_'+to_user_id+'" id="chat_message_'+to_user_id+'" class="form-control"></textarea>';
@@ -65,7 +66,10 @@ function Start_chat()
     var to_user_firstname = $(this).data('touserfirstname');
     var to_user_lastname = $(this).data('touserlastname');
     //alert("start chat: " + to_user_id +" "+ to_user_firstname +" "+ to_user_lastname);
-    message_box = Make_chat_dialog_box(to_user_id, to_user_firstname, to_user_lastname);
+    var total_element = $(".user_dialog").length;
+    //alert(total_element);
+    gap = 'right: calc(21% - 10px + '+total_element*360+'px);'
+    message_box = Make_chat_dialog_box(to_user_id, to_user_firstname, to_user_lastname, gap);
     $("#user_message_box_details").append(message_box);
 }
 
@@ -93,6 +97,26 @@ function Send_chat()
     })
 }
 
+function Fetch_user_chat_history(to_user_id)
+{
+    $.ajax({
+        url:"Includes/fetch_user_chat_history.inc.php",
+        method:"POST",
+        data:{to_user_id:to_user_id},
+        success:function(data){
+            $('#chat_history_'+to_user_id).html(data);
+        }
+    })
+}
+
+function Update_chat_history_data()
+{
+    $('.chat_history').each(function(){
+        var to_user_id = $(this).data('touserid');
+        Fetch_user_chat_history(to_user_id);
+    });
+}
+
 $(document).ready(function() {
     var chat_top = $("#navbarOffset").outerHeight(true);
     $("#chat_box").css("top", chat_top);
@@ -101,6 +125,7 @@ $(document).ready(function() {
     setInterval(function(){
         Update_last_activity();
         Fetch_user();
+        Update_chat_history_data();
     }, 5000);
     $(document).on('click', '.start_chat', Start_chat);
     $(document).on('click', '.close_chat', Close_chat);

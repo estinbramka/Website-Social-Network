@@ -47,6 +47,13 @@ function Fetch_user_chat_history($from_user_id, $to_user_id, $conn)
         ';
     }
     $output .= '</ul>';
+
+    $stmt = $conn->prepare("UPDATE chat_message SET status = '0' WHERE from_user_id = ? AND to_user_id = ? AND status = '1';");
+    $stmt->bind_param("ss", $to_user_id, $from_user_id);
+    $stmt->execute();
+    $stmt->free_result();
+    $stmt->close();
+    
     return $output;
 }
 
@@ -62,4 +69,22 @@ function Get_user_name($user_id, $conn)
     {
         return $row['user_firstname'] . " " . $row['user_lastname'];
     }
+}
+
+function Count_unseen_message($from_user_id, $to_user_id, $conn)
+{
+    $stmt = $conn->prepare("SELECT * FROM chat_message WHERE from_user_id = ? AND to_user_id = ? AND status = '1';");
+    $stmt->bind_param("ss", $from_user_id, $to_user_id);
+    $stmt->execute();
+    $stmt->store_result();
+    $count = $stmt->num_rows;
+    $stmt->free_result();
+    $stmt->close();
+
+    $output = '';
+    if($count > 0)
+    {
+        $output = '<span class="badge badge-pill badge-success" style="position: absolute;right: 30px;top: 11px;">'.$count.'</span>';
+    }
+    return $output;
 }

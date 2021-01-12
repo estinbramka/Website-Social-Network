@@ -34,6 +34,7 @@ while ($row = $resultData->fetch_assoc())
             <div class="chat_box_user_status ' . $status . '"></div>
         </div>
         <p class="d-inline align-middle ml-2"><b>' . $row["user_firstname"] . ' ' . $row["user_lastname"] . '</b></p>
+        ' . Count_unseen_message($row['user_id'], $_SESSION['user_id'], $conn) . '
     </a>
     '
     ;

@@ -50,7 +50,7 @@
     background: white;
     position: fixed;
     bottom: 0px;
-    right: 50px;
+    right: calc(21% - 10px);
     width: 350px;
     border: 1px solid red;
 }
